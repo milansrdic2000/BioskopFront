@@ -1,0 +1,22 @@
+<app-navigation [isAdmin]="true"></app-navigation>
+<section>
+  <header>
+    <h2>Pretrazi po Filmovima</h2>
+    <input
+      type="text"
+      placeholder="Naziv Filma"
+      [ngModel]="projectionSearchTerm"
+      (ngModelChange)="onSearchChange($event)"
+    />
+    <button class="btn-success" (click)="dodajProjekciju()">
+      Dodaj projekciju
+    </button>
+  </header>
+  <app-data-row
+    *ngFor="let projection of projections; let i = index"
+    [title]="projection?.film?.nazivFilma || ''"
+    [description]="'Datum projekcije: ' + getDatumProjekcije(projection)"
+    (editClick)="onEditClick(projection)"
+    (deleteClick)="onDeleteClick(projection)"
+  ></app-data-row>
+</section>

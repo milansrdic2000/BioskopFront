@@ -1,0 +1,20 @@
+<app-navigation [isAdmin]="true"></app-navigation>
+<section>
+  <header>
+    <h2>Pretrazi Filmove</h2>
+    <input
+      type="text"
+      placeholder="Naziv Filma"
+      [ngModel]="movieSearchTerm"
+      (ngModelChange)="onSearchChange($event)"
+    />
+    <button class="btn-success" (click)="dodajFilm()">Dodaj film</button>
+  </header>
+  <app-data-row
+    *ngFor="let movie of movies; let i = index"
+    [title]="movie?.nazivFilma || ''"
+    [description]="movie?.opisFilma || ''"
+    (editClick)="onEditClick(movie)"
+    (deleteClick)="onDeleteClick(movie)"
+  ></app-data-row>
+</section>

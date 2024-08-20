@@ -1,0 +1,23 @@
+@use "../../../styles/structure";
+@use "../../../styles/box-model";
+@use "../../../styles/colors";
+
+article {
+  @include structure.flex(space-between);
+  padding: box-model.get-padding(md) box-model.get-padding(lg);
+
+  border-bottom: box-model.neutral-border();
+}
+
+.left {
+  width: 80%;
+  h3 {
+    margin-bottom: box-model.get-margin(sm);
+  }
+}
+.right {
+  width: 20%;
+  button {
+    margin-left: box-model.get-margin(sm);
+  }
+}

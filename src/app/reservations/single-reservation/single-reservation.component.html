@@ -1,0 +1,35 @@
+<app-navigation></app-navigation>
+<section class="single-reservation">
+  <header class="reservation-header">
+    <button (click)="goToReservationList()">Nazad</button>
+    <h2>Rezervisi svoje mesto</h2>
+  </header>
+  <div class="reservation-content">
+    <app-hall-seats
+      [sedistaList]="hall?.listaSedista"
+      [karte]="tickets"
+      (seatClicked)="onSeatClicked($event)"
+    ></app-hall-seats>
+    <div class="reservation-info">
+      <h3>{{ currentMovie?.nazivFilma }}</h3>
+      <img class="movie-img" src="assets/pictures/joker.png" alt="" />
+      <h4>{{ currentProjection?.sala?.nazivSale }}</h4>
+      <div class="reservation-sub-info">
+        <p>Cena karte: {{ currentProjection?.cenaKarte }}RSD</p>
+        <p>Datum projekcije: {{ getDatumProjekcije() }}</p>
+      </div>
+      <p>
+        <span>Ukupna cena: </span> {{ ticketsCount }} *
+        {{ currentProjection?.cenaKarte }} =
+        <span class="text-emphasis">{{ getFullPrice() }} RSD</span>
+      </p>
+      <button
+        class="reservation-submit"
+        (click)="reserve()"
+        [ngClass]="{ 'btn-disabled': !isReserveAllowed() }"
+      >
+        {{ newReservation ? "Rezervisi" : "Izmeni rezervaciju" }}
+      </button>
+    </div>
+  </div>
+</section>

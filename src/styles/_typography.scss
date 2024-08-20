@@ -1,0 +1,66 @@
+@use "./utils.scss";
+
+$main-font: "Manrope", sans-serif;
+
+@mixin font-style($weight, $size, $line-height) {
+  font-weight: $weight;
+  font-size: utils.size-px($size);
+  line-height: utils.size-px($line-height);
+}
+
+$font-styles: (
+  h1: (
+    700,
+    35,
+    24,
+  ),
+  h2: (
+    700,
+    30,
+    24,
+  ),
+  h3: (
+    700,
+    24,
+    20,
+  ),
+  h4: (
+    300,
+    18,
+    20,
+  ),
+  big-text: (
+    400,
+    18,
+    24,
+  ),
+  bold-text: (
+    500,
+    14,
+    26,
+  ),
+  text: (
+    300,
+    14,
+    16,
+  ),
+  small-text: (
+    300,
+    12,
+    20,
+  ),
+  button: (
+    400,
+    16,
+    20,
+  ),
+);
+
+@mixin apply-font-style($style) {
+  $font-values: map-get($font-styles, $style);
+  @include font-style(
+    nth($font-values, 1),
+    nth($font-values, 2),
+    nth($font-values, 3)
+  );
+}

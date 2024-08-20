@@ -1,0 +1,57 @@
+@use "../../../styles/structure";
+@use "../../../styles/box-model";
+@use "../../../styles/colors";
+
+.hall-container {
+  @include structure.flex(center, center, column);
+}
+h4 {
+  margin-bottom: box-model.get-margin(sm);
+  text-align: center;
+  margin-left: 50px;
+}
+.hall {
+  .row {
+    @include structure.flex(flex-start);
+    gap: box-model.get-margin(sm);
+    margin-bottom: box-model.get-margin(sm);
+    .seat {
+      cursor: pointer;
+      @include structure.flex();
+      width: 50px;
+      height: 50px;
+      background-color: colors.$secondary-color;
+      border-radius: box-model.get-border-radius(sm);
+
+      &.seat-taken {
+        background-color: colors.$primary-color;
+        border: box-model.neutral-border();
+      }
+      &.seat-selected {
+        background-color: colors.$accent;
+        // border: box-model.accent-border();
+      }
+      &.seat-disabled {
+        background-color: colors.$error;
+      }
+      &.seat-to-add {
+        background-color: colors.$success;
+        border: 3px solid #0be10b;
+      }
+      &.seat-add-candidate {
+        background-color: colors.$success;
+      }
+      &.seat-to-delete {
+        background-color: colors.$error;
+      }
+      &.seat-neutral {
+        // background-color: transparent;
+      }
+    }
+    .row-index-column {
+      width: 50px;
+      height: 50px;
+      @include structure.flex();
+    }
+  }
+}

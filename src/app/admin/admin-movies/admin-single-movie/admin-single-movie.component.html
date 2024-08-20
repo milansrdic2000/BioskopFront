@@ -1,0 +1,68 @@
+<app-navigation [isAdmin]="true"></app-navigation>
+<section class="single-movie-section">
+  <header>
+    <h2>{{ film?.nazivFilma }}</h2>
+  </header>
+  <div class="movie-details">
+    <div class="movie-details-image">
+      <img
+        [src]="uploadService.getImagePath(film?.imgPath)"
+        alt="Movie Image"
+      />
+      <button (click)="triggerFileUpload()">Upload File</button>
+    </div>
+    <input
+      type="file"
+      #fileInput
+      (change)="onFileSelected($event)"
+      style="display: none"
+    />
+    <form class="movie-details-info">
+      <input
+        type="text"
+        placeholder="Naziv Filma"
+        name="nazivFilma"
+        [(ngModel)]="film.nazivFilma"
+      />
+      <textarea
+        type="text"
+        placeholder="Opis Filma"
+        name="opisFilma"
+        [(ngModel)]="film.opisFilma"
+      ></textarea>
+      <input
+        type="number"
+        placeholder="Trajanje u minutima"
+        name="trajanje"
+        [(ngModel)]="film.trajanje"
+      />
+      <input
+        type="date"
+        placeholder="Datum premijere"
+        name="datumPremijere"
+        [(ngModel)]="datumPremijereFilma"
+      />
+      <select name="reziser" id="" [(ngModel)]="selectedReziser">
+        <option
+          *ngFor="let reziser of reziseri; let i = index"
+          [ngValue]="reziser"
+        >
+          {{ reziser.ime + " " + reziser.prezime }}
+        </option>
+      </select>
+      <div class="genre-tiles">
+        <span
+          *ngFor="let genre of genresList; let i = index"
+          [ngClass]="getGenre(genre) === selectedGenre ? 'active' : ''"
+          (click)="selectGenre(getGenre(genre))"
+        >
+          {{ genre }}
+        </span>
+      </div>
+    </form>
+  </div>
+  <button *ngIf="isInEditMode()" (click)="editFilm()">Izmeni film</button>
+  <button *ngIf="!isInEditMode()" (click)="saveFilm()" class="btn-success">
+    Sacuvaj film
+  </button>
+</section>

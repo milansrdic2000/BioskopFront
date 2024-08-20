@@ -1,0 +1,22 @@
+<app-navigation></app-navigation>
+<section class="movie-dashboard-section">
+  <header class="dashboard-header">
+    <h4>Nasa ponuda</h4>
+    <div class="dashboard-header-filters">
+      <span
+        *ngFor="let genre of genresList; let i = index"
+        [ngClass]="getGenre(genre) === selectedGenre ? 'active' : ''"
+        (click)="selectGenre(getGenre(genre))"
+      >
+        {{ genre }}
+      </span>
+    </div>
+  </header>
+  <div class="dashboard-movies">
+    <app-movie-card
+      *ngFor="let movie of moviesList"
+      [movie]="movie"
+      (movieClick)="onMovieClick($event)"
+    ></app-movie-card>
+  </div>
+</section>

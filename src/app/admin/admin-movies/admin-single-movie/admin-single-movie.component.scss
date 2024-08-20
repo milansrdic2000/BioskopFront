@@ -1,0 +1,76 @@
+@use "../../../../styles/box-model";
+@use "../../../../styles/colors";
+@use "../../../../styles/structure";
+
+.single-movie-section {
+  @include structure.flex(center, center, column);
+}
+
+header {
+  margin-bottom: box-model.get-margin(xl);
+}
+
+.movie-details {
+  @include structure.flex(space-around, stretch, row);
+  gap: box-model.get-margin(xl);
+  width: 90%;
+  margin-bottom: box-model.get-margin(xl);
+}
+.movie-details-image {
+  width: 50%;
+  @include box-model.box-shadow();
+  img {
+    width: 100%;
+    // max-height: 300px;
+    object-fit: cover;
+  }
+  position: relative;
+
+  &:hover {
+    button {
+      visibility: visible;
+    }
+  }
+  button {
+    visibility: hidden;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    @include box-model.box-shadow();
+  }
+}
+.movie-details-info {
+  width: 50%;
+  @include structure.flex(space-evenly, center, column);
+
+  input,
+  textarea,
+  select {
+    width: 100%;
+    margin-bottom: box-model.get-margin(sm);
+  }
+}
+
+.genre-tiles {
+  @include structure.flex();
+  gap: box-model.get-margin(md);
+
+  span {
+    color: colors.$neutral-color;
+    border: box-model.neutral-border(sm);
+    padding: box-model.get-padding(sm) box-model.get-padding(md);
+    border-radius: box-model.get-border-radius(md);
+
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: colors.$accent;
+      color: colors.$primary-color;
+    }
+    &.active {
+      background-color: colors.$accent;
+      color: colors.$primary-color;
+    }
+  }
+}

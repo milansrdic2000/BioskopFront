@@ -1,0 +1,57 @@
+@use "../../styles/colors.scss" as colors;
+@use "../../styles/box-model.scss" as box-model;
+@use "../../styles/structure.scss" as structure;
+
+.login-section {
+  @include structure.flex();
+}
+
+.form-container {
+  @include box-model.box-shadow();
+  padding: box-model.get-padding(md);
+  width: 50%;
+  @include structure.flex(center, center, column);
+}
+.form-logo {
+  width: 60%;
+  @include structure.flex();
+
+  img {
+    &:first-child {
+      width: 20%;
+    }
+    &:last-child {
+      width: 80%;
+    }
+  }
+  margin-bottom: box-model.get-margin(md);
+}
+form {
+  width: 60%;
+  @include structure.flex(center, center, column);
+}
+.form-group {
+  width: 100%;
+  margin-bottom: box-model.get-margin(md);
+  text-align: center;
+
+  & > input {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+    display: block;
+  }
+  &.submit-row {
+    margin-bottom: box-model.get-margin(xs);
+  }
+  &.description-row {
+    text-align: left;
+
+    span {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}

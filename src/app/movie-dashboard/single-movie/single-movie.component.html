@@ -1,0 +1,64 @@
+<app-navigation></app-navigation>
+<section class="movie-banner-section">
+  <div class="movie-banner">
+    <img src="assets/pictures/joker-baner.jpeg" alt="" />
+    <div class="overlay-gradient"></div>
+    <div class="banner-info">
+      <h1>{{ movie?.nazivFilma }}</h1>
+      <button>Rezervisi karte</button>
+    </div>
+  </div>
+  <div class="movie-info">
+    <div class="info-table">
+      <div class="info-row">
+        <span>Zanr</span>
+        <span>{{ getGenre() }}</span>
+      </div>
+      <div class="info-row">
+        <span>Trajanje</span>
+        <span>{{ movie?.trajanje }}</span>
+      </div>
+      <div class="info-row">
+        <span>Premijera</span>
+        <span>{{ getPremijera() }}</span>
+      </div>
+      <div class="info-row">
+        <span>Reziser</span>
+        <span>{{ getReziserImePrezime() }}</span>
+      </div>
+    </div>
+    <div class="movie-description">
+      <p>{{ movie?.opisFilma }}</p>
+    </div>
+  </div>
+</section>
+<section class="projections-section">
+  <div class="projections-header">
+    <h3>Izaberi projekciju</h3>
+    <div class="date-track">
+      <div
+        class="date-track-item"
+        *ngFor="let date of trackDates"
+        (click)="selectDate(date)"
+        [ngClass]="{ selected: selectedDate === date }"
+      >
+        <span>{{ getDayOfWeek(date) }}</span>
+        <span>{{ date.getDate() }}</span>
+        <span>{{ getMonth(date) }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="projections-container">
+    <div
+      class="projection"
+      *ngFor="let projekcija of getProjectionsForDate()"
+      (click)="onProjectionClick(projekcija)"
+    >
+      <div class="projection-info">
+        <h3>{{ getTime(projekcija.datumProjekcije!) }}</h3>
+        <span>Bioskopska sala: {{ projekcija.sala?.nazivSale }}</span>
+        <span>{{ projekcija.cenaKarte }} RSD</span>
+      </div>
+    </div>
+  </div>
+</section>

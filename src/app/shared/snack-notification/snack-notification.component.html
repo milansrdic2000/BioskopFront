@@ -1,0 +1,14 @@
+<div
+  class="notification-bar"
+  [ngClass]="{ hidden: hidden, error: type === 'error' }"
+>
+  <div class="notification-bar-close" (click)="close()">
+    <img src="assets/svg/icons/close.png" alt="" />
+  </div>
+  <div class="message">
+    {{ message }}
+  </div>
+</div>
+<div class="loading-modal" [hidden]="!loadingModal">
+  <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+</div>

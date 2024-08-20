@@ -1,0 +1,38 @@
+@use "../../../styles/colors";
+@use "../../../styles/structure";
+@use "../../../styles/box-model";
+
+nav {
+  background-color: colors.$primary-color;
+  color: colors.$text-color;
+  padding: box-model.get-padding(md);
+  height: structure.$nav-height;
+  @include box-model.box-shadow();
+
+  @include structure.flex(flex-start, center);
+}
+
+.nav-logo {
+  width: 20%;
+  @include structure.flex();
+  :first-child {
+    max-width: 20%;
+    max-height: 100px;
+  }
+  :last-child {
+    max-width: 80%;
+    max-height: 100px;
+  }
+}
+.nav-items {
+  width: 60%;
+  @include structure.flex(center, center);
+  gap: box-model.get-margin(xl);
+
+  li {
+    cursor: pointer;
+  }
+  .active {
+    color: colors.$accent;
+  }
+}

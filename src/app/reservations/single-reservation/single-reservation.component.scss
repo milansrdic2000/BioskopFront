@@ -1,0 +1,66 @@
+@use "../../../styles/structure";
+@use "../../../styles/colors";
+@use "../../../styles/box-model";
+@use "../../../styles/typography";
+.reservation-header {
+  @include structure.flex(flex-start);
+  border-bottom: box-model.accent-border(sm);
+  padding-bottom: box-model.get-padding(md);
+  button {
+    width: 10%;
+    position: relative;
+    left: box-model.get-margin(xl);
+  }
+  h2 {
+    width: 80%;
+    text-align: center;
+  }
+}
+
+.reservation-content {
+  margin-top: box-model.get-margin(xxl);
+  @include structure.flex(space-around, flex-start);
+}
+
+app-hall-seats {
+  width: 60%;
+}
+.reservation-info {
+  @include structure.flex(space-around, flex-start, column);
+  width: 30%;
+  h3 {
+    margin-bottom: box-model.get-margin(md);
+    align-self: center;
+  }
+  h4 {
+    color: colors.$accent;
+  }
+  .movie-img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    @include box-model.box-shadow();
+    border-radius: box-model.get-border-radius(md);
+    margin-bottom: box-model.get-margin(md);
+  }
+  p > span {
+    color: colors.$accent;
+    @include typography.apply-font-style(text);
+  }
+
+  .reservation-submit {
+    margin-top: box-model.get-margin(md);
+    width: 100%;
+    @include structure.flex(space-around, flex-start);
+  }
+}
+.reservation-sub-info {
+  margin-top: box-model.get-margin(sm);
+  @include structure.flex(space-around, flex-start, column);
+  gap: box-model.get-margin(sm);
+
+  border-bottom: box-model.neutral-border(md);
+  padding-bottom: box-model.get-padding(sm);
+  margin-bottom: box-model.get-margin(md);
+  width: 100%;
+}

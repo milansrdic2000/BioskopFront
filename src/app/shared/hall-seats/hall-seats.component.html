@@ -1,0 +1,37 @@
+<div class="hall-container">
+  <h4>PLATNO</h4>
+  <div class="hall">
+    <div class="row" *ngFor="let row of getRows(); let i = index">
+      <span class="row-index-column">{{ i + 1 }}.</span>
+      <div
+        class="seat"
+        *ngFor="let seat of row; let j = index"
+        [ngClass]="{
+          'seat-taken': !!seat.taken,
+          'seat-selected': seat.activeSelected,
+          'seat-disabled': !seat.idSedista && mode === 'reservation',
+          'seat-to-add': seat.operation === crudModeEnum.ADD,
+          'seat-add-candidate': seat.operation === crudModeEnum.ADD_CANDIDATE,
+          'seat-to-delete': seat.operation === crudModeEnum.DELETE,
+          'seat-neutral': seat.operation === crudModeEnum.NEUTRAL
+        }"
+        (click)="selectSeat(i, j)"
+      >
+        <!-- <span *ngIf="true">{{ seat.idSedista }}</span> -->
+        <span *ngIf="!seat.idSedista && mode === 'reservation'">X</span>
+        <span
+          *ngIf="
+            seat.operation === crudModeEnum.ADD_CANDIDATE && mode === 'admin'
+          "
+          >+</span
+        >
+        <span *ngIf="seat.operation === crudModeEnum.ADD && mode === 'admin'"
+          >O</span
+        >
+        <span *ngIf="seat.operation === crudModeEnum.DELETE && mode === 'admin'"
+          >-</span
+        >
+      </div>
+    </div>
+  </div>
+</div>

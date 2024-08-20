@@ -1,0 +1,16 @@
+@use "../../../styles/box-model";
+@use "../../../styles/typography";
+@use "../../../styles/colors";
+@use "../../../styles/structure";
+
+header {
+  @include structure.flex();
+  gap: box-model.get-margin(sm);
+  h2 {
+    margin-left: auto;
+  }
+  button {
+    margin-left: auto;
+    margin-right: box-model.get-margin(xxl);
+  }
+}

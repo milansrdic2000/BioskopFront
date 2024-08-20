@@ -1,0 +1,26 @@
+@use "../../../styles/structure";
+@use "../../../styles/colors";
+@use "../../../styles/box-model";
+.reservation-list-section {
+  padding-top: box-model.get-margin(md);
+  & > h1 {
+    text-align: center;
+  }
+}
+
+.reservation-container {
+  padding: box-model.get-padding(md) box-model.get-padding(lg);
+}
+
+.single-reservation {
+  border-bottom: box-model.neutral-border();
+  padding: box-model.get-padding(md);
+
+  @include structure.flex(space-between);
+
+  .left-side-info {
+    h4 {
+      margin-bottom: box-model.get-margin(xs);
+    }
+  }
+}

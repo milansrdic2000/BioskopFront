@@ -1,0 +1,25 @@
+@use "../../../../styles/box-model";
+@use "../../../../styles/typography";
+@use "../../../../styles/colors";
+@use "../../../../styles/structure";
+
+.single-projection-section {
+  @include structure.flex(flex-start, center, column);
+}
+header {
+  h2 {
+    // margin-left: auto;
+    text-align: center;
+  }
+  margin-top: box-model.get-margin(lg);
+  //   button {
+  //     margin-left: auto;
+  //     margin-right: box-model.get-margin(xxl);
+  //   }
+  margin-bottom: box-model.get-margin(lg);
+}
+
+.projection-container {
+  @include structure.flex(flex-start, stretch, column);
+  gap: box-model.get-margin(md);
+}

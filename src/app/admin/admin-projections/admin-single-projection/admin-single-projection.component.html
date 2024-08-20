@@ -1,0 +1,47 @@
+<app-navigation [isAdmin]="true"></app-navigation>
+<section class="single-projection-section">
+  <header>
+    <h2>Projekcija</h2>
+  </header>
+  <div class="projection-container">
+    <div>
+      <label for="">Datum projekcije:</label>
+      <input type="datetime-local" [(ngModel)]="datumProjekcije" />
+    </div>
+    <input
+      type="number"
+      [(ngModel)]="projekcija.cenaKarte"
+      placeholder="Cena karte"
+    />
+    <div>
+      <input
+        type="text"
+        [ngModel]="filmSearchTerm"
+        (ngModelChange)="onFilmSearch($event)"
+        placeholder="Pretraga filma"
+      />
+      <select [(ngModel)]="selectedFilm">
+        <option *ngFor="let film of filmovi" [ngValue]="film">
+          {{ film.nazivFilma }}
+        </option>
+      </select>
+    </div>
+    <div>
+      <input
+        type="text"
+        [ngModel]="salaSearchTerm"
+        (ngModelChange)="onSalaSearch($event)"
+        placeholder="Pretraga sala"
+      />
+      <select [(ngModel)]="selectedSala">
+        <option *ngFor="let sala of sale" [ngValue]="sala">
+          {{ sala.nazivSale }}
+        </option>
+      </select>
+    </div>
+    <button *ngIf="!isEditMode" class="btn-success" (click)="saveProjection()">
+      Sacuvaj
+    </button>
+    <button *ngIf="isEditMode" (click)="editProjection()">Izmeni</button>
+  </div>
+</section>

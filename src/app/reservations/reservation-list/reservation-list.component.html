@@ -1,0 +1,21 @@
+<app-navigation></app-navigation>
+<section class="reservation-list-section">
+  <h1>Moje rezervacije:</h1>
+
+  <div class="reservation-container">
+    <article
+      class="single-reservation"
+      *ngFor="let rezervacija of rezervacije; let i = index"
+    >
+      <div class="left-side-info">
+        <h4>{{ rezervacija.projekcija?.film?.nazivFilma }}</h4>
+        <span>{{ formatDate(rezervacija.projekcija?.datumProjekcije) }}</span>
+      </div>
+      <div class="right-side">
+        <button class="" (click)="viewReservation(rezervacija?.projekcija?.id)">
+          Izmeni
+        </button>
+      </div>
+    </article>
+  </div>
+</section>

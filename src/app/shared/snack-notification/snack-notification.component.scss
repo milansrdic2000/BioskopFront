@@ -1,0 +1,81 @@
+@use "../../../styles/structure";
+@use "../../../styles/colors";
+@use "../../../styles/box-model";
+@use "../../../styles/typography";
+.notification-bar {
+  position: fixed;
+  z-index: 9999999;
+  //   @include typography.apply-font-style(emphasis-text);
+  &.hidden {
+    display: none;
+  }
+  //   color: colors.get-color(secondary, 500);
+  position: fixed;
+  bottom: 2%;
+  right: 2%;
+  min-height: 100px;
+  width: 400px;
+  background-color: colors.$success;
+
+  padding-bottom: box-model.get-padding(md);
+
+  &.error {
+    background-color: colors.$error;
+  }
+
+  // padding: box-model.get-padding(xs) box-model.get-padding(lg);
+  .message {
+    @include structure.flex(column, center, center);
+    text-align: justify;
+
+    padding: box-model.get-padding(xs) box-model.get-padding(lg);
+  }
+
+  .notification-bar-close {
+    text-align: right;
+    padding-top: box-model.get-padding(xs);
+    padding-right: box-model.get-padding(xs);
+    // font-size: 15px;
+    cursor: pointer;
+    // padding: 5px;
+    cursor: pointer;
+
+    img {
+      width: 30px;
+      height: 30px;
+      transition: all 0.3s;
+      &:hover {
+        background-color: white;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+.loading-modal {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  left: 0;
+  z-index: 999999999;
+  background-color: rgba(0, 0, 0, 0.84);
+}
+
+ngx-spinner {
+  display: block;
+  position: absolute !important;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  ::ng-deep .ngx-spinner-overlay {
+    position: absolute !important;
+    background-color: transparent !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .notification-bar {
+    width: 200px;
+  }
+}

@@ -1,0 +1,10 @@
+<article>
+  <div class="left">
+    <h3>{{ title || "lodaing" }}</h3>
+    <p>{{ description || "lodaing" }}</p>
+  </div>
+  <div class="right">
+    <button (click)="onEditClick()">Izmeni</button>
+    <button (click)="onDeleteClick()" class="btn-error">Obrisi</button>
+  </div>
+</article>

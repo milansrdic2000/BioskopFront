@@ -1,0 +1,13 @@
+<article class="card" (click)="onMovieClick()">
+  <img [src]="uploadService.getImagePath(movie?.imgPath)" alt="" />
+  <div class="movie-info">
+    <div class="first-row">
+      <h4>{{ movie.nazivFilma }}</h4>
+      <span>{{ getGenre() }}</span>
+    </div>
+    <div class="second-row">
+      <span>Datum premijere: {{ formatDate() }}</span>
+      <span>{{ movie.trajanje }} min</span>
+    </div>
+  </div>
+</article>

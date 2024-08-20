@@ -1,1 +1,117 @@
 /* You can add global styles to this file, and also import other style files */
+@use "./styles/colors.scss";
+@use "./styles/box-model.scss";
+@use "./styles/typography.scss";
+@use "./styles/structure.scss";
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Manrope:wght@200..800&display=swap");
+* {
+  box-sizing: border-box;
+  color: colors.$text-color;
+  font-family: "Lexend";
+}
+root {
+  // 1rem = 10px (62.5% of 16px)
+  font-size: 62.5%;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  @include typography.apply-font-style(h1);
+}
+h2 {
+  @include typography.apply-font-style(h2);
+}
+h3 {
+  @include typography.apply-font-style(h3);
+}
+h4 {
+  @include typography.apply-font-style(h4);
+}
+p {
+  @include typography.apply-font-style(text);
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color: colors.$text-color;
+}
+span {
+  @include typography.apply-font-style(small-text);
+}
+p,
+a {
+  @include typography.apply-font-style(text);
+}
+section {
+  margin: 0;
+  padding: 0;
+  background-color: colors.$primary-color;
+  min-height: calc(100vh - structure.$nav-height);
+}
+// INPUTS
+input,
+textarea {
+  border: box-model.neutral-border();
+  border-radius: box-model.get-border-radius(md);
+  background-color: transparent !important;
+  @include typography.apply-font-style(text);
+
+  padding: box-model.get-padding(sm) box-model.get-padding(sm);
+}
+label {
+  @include typography.apply-font-style(text);
+}
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 600000s 0s, color 600000s 0s;
+  @include typography.apply-font-style(text);
+}
+input[data-autocompleted] {
+  background-color: transparent !important;
+  @include typography.apply-font-style(text);
+}
+select {
+  background-color: colors.$primary-color;
+  border: box-model.neutral-border();
+  border-radius: box-model.get-border-radius(md);
+  @include typography.apply-font-style(text);
+  padding: box-model.get-padding(sm) box-model.get-padding(sm);
+}
+// BUTTONS
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: box-model.get-border-radius(sm);
+  background-color: colors.$accent;
+  color: colors.$text-color;
+  @include typography.apply-font-style(button);
+  padding: box-model.get-padding(sm) box-model.get-padding(md);
+
+  &.btn-disabled {
+    background-color: colors.$neutral-color;
+    color: colors.$text-color;
+    cursor: not-allowed;
+  }
+  &.btn-success {
+    background-color: colors.$success;
+  }
+  &.btn-error {
+    background-color: colors.$error;
+  }
+}

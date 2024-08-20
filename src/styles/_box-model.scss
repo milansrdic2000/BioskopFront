@@ -1,0 +1,70 @@
+@use "./utils.scss";
+@use "./colors.scss";
+
+$padding-map: (
+  xxs: utils.size-px(2),
+  xs: utils.size-px(4),
+  sm: utils.size-px(8),
+  sm-md: utils.size-px(12),
+  md: utils.size-px(16),
+  lg: utils.size-px(24),
+  xl: utils.size-px(32),
+  xxl: utils.size-px(48),
+  xxxl: utils.size-px(64),
+  xxxxl: utils.size-px(96),
+);
+@function get-padding($size) {
+  @return map-get($padding-map, $size);
+}
+// MARGINS
+$margin-map: (
+  xxs: utils.size-px(2),
+  xs: utils.size-px(4),
+  sm: utils.size-px(8),
+  sm-md: utils.size-px(12),
+  md: utils.size-px(16),
+  lg: utils.size-px(24),
+  xl: utils.size-px(32),
+  xxl: utils.size-px(48),
+  xxxl: utils.size-px(64),
+  xxxxl: utils.size-px(96),
+  xxxxxl: utils.size-px(128),
+);
+@function get-margin($size) {
+  @return map-get($margin-map, $size);
+}
+
+$border-radius: (
+  sm: utils.size-px(4),
+  md: utils.size-px(8),
+  lg: utils.size-px(16),
+);
+@function get-border-radius($size) {
+  @return map-get($border-radius, $size);
+}
+
+@function main-border($width: md) {
+  @return get-border-width($width) solid colors.$primary-color;
+}
+@function neutral-border($width: md) {
+  @return get-border-width($width) solid colors.$neutral-color;
+}
+@function secondary-border($width: md) {
+  @return get-border-width($width) solid colors.$text-color;
+}
+@function accent-border($width: md) {
+  @return get-border-width($width) solid colors.$accent;
+}
+
+$border-width: (
+  sm: utils.size-px(1),
+  md: utils.size-px(2),
+  lg: utils.size-px(4),
+);
+@function get-border-width($size) {
+  @return map-get($border-width, $size);
+}
+
+@mixin box-shadow() {
+  box-shadow: 0px 0px 14.1px 4px #0000005c;
+}

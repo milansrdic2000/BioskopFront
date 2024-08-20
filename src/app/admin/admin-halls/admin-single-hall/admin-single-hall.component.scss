@@ -1,0 +1,23 @@
+@use "../../../../styles/box-model";
+@use "../../../../styles/colors";
+@use "../../../../styles/structure";
+
+.single-hall-section {
+  @include structure.flex(center, center, column);
+}
+
+header {
+  margin-bottom: box-model.get-margin(xl);
+}
+
+.hall-container {
+  @include structure.flex(space-around, stretch, row);
+  gap: box-model.get-margin(xl);
+  width: 90%;
+  margin-bottom: box-model.get-margin(xl);
+}
+
+.hall-properties {
+  @include structure.flex(center, center, column);
+  gap: box-model.get-margin(sm);
+}

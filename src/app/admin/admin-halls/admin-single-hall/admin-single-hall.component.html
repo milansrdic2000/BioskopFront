@@ -1,0 +1,49 @@
+<app-navigation [isAdmin]="true"></app-navigation>
+<section class="single-hall-section">
+  <header>
+    <h2>{{ hall.nazivSale }}</h2>
+    <!-- <button class="btn-success" (click)="onEditClick()">Izmeni</button> -->
+  </header>
+  <div class="hall-container">
+    <app-hall-seats
+      [sedistaList]="hall?.listaSedista"
+      [mode]="'admin'"
+      (seatClicked)="onSeatClicked($event)"
+    ></app-hall-seats>
+    <div class="hall-properties">
+      <input
+        type="text"
+        placeholder="Naziv Sale"
+        [(ngModel)]="hall.nazivSale"
+      />
+      <h4>Izgenerisi matricu sedista</h4>
+      <input
+        type="number"
+        placeholder="Broj redova"
+        [(ngModel)]="generatedRowsNumber"
+      />
+      <input
+        type="number"
+        placeholder="Broj kolona"
+        [(ngModel)]="generatedColumnsNumber"
+      />
+      <button class="btn-success" (click)="generateSeats()">
+        Generisi matricu
+      </button>
+    </div>
+  </div>
+  <button
+    class="btn-success"
+    (click)="dodajSalu()"
+    *ngIf="crudFormMode === crudModeEnum.ADD"
+  >
+    Dodaj Salu
+  </button>
+  <button
+    *ngIf="crudFormMode === crudModeEnum.UPDATE"
+    class=""
+    (click)="izmeniSalu()"
+  >
+    Izmeni salu
+  </button>
+</section>

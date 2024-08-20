@@ -1,0 +1,41 @@
+<header>
+  <nav>
+    <div class="nav-logo">
+      <img src="assets/pictures/logo-img.png" alt="" />
+      <img src="assets/pictures/logo-text.png" alt="" />
+    </div>
+    <ul class="nav-items" *ngIf="!isAdmin">
+      <li>
+        <a routerLink="/filmovi" routerLinkActive="active">Filmovi</a>
+      </li>
+      <li>
+        <a routerLink="/rezervacije" routerLinkActive="active">Rezervacije</a>
+      </li>
+      <li *ngIf="isAuthenticated">
+        <a routerLinkActive="active" (click)="logOff()">Odjava</a>
+      </li>
+      <li *ngIf="!isAuthenticated">
+        <a routerLink="/login" routerLinkActive="active">Prijava</a>
+      </li>
+    </ul>
+    <ul class="nav-items" *ngIf="isAdmin">
+      <li>
+        <a routerLink="/admin/filmovi" routerLinkActive="active">Filmovi</a>
+      </li>
+      <li>
+        <a routerLink="/admin/sale" routerLinkActive="active">Sale</a>
+      </li>
+      <li>
+        <a routerLink="/admin/projekcije" routerLinkActive="active"
+          >Projekcije</a
+        >
+      </li>
+      <li *ngIf="isAuthenticated">
+        <a routerLinkActive="active" (click)="logOff()">Odjava</a>
+      </li>
+      <li *ngIf="!isAuthenticated">
+        <a routerLink="/login" routerLinkActive="active">Prijava</a>
+      </li>
+    </ul>
+  </nav>
+</header>

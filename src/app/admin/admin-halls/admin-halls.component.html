@@ -1,0 +1,20 @@
+<app-navigation [isAdmin]="true"></app-navigation>
+<section class="halls-list-section">
+  <header>
+    <h2>Pretrazi Sale</h2>
+    <input
+      type="text"
+      placeholder="Naziv Sale"
+      [ngModel]="salaSearchTerm"
+      (ngModelChange)="onSearchChange($event)"
+    />
+    <button class="btn-success" (click)="dodajSalu()">Dodaj salu</button>
+  </header>
+  <app-data-row
+    *ngFor="let hall of halls; let i = index"
+    [title]="hall.nazivSale || ''"
+    [description]="''"
+    (editClick)="onEditClick(hall)"
+    (deleteClick)="onDeleteClick(hall)"
+  ></app-data-row>
+</section>
